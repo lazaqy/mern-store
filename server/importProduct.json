@@ -1,0 +1,47 @@
+{
+  "name": "Pro Nature Whole Wheat Organic Atta",
+  "image": [
+    "http://res.cloudinary.com/dsyqx5lie/image/upload/v1736325868/mern-store/cpw0pcyfbhnnpxgmzlc7.jpg",
+    "http://res.cloudinary.com/dsyqx5lie/image/upload/v1736325873/mern-store/dff5gazj2cwszukhcvd4.jpg",
+    "http://res.cloudinary.com/dsyqx5lie/image/upload/v1736325878/mern-store/q5njtwusryo9mjagowwz.jpg"
+  ],
+  "category": [
+    {
+      "_id": "67760446893c6bbf2390fc22",
+      "name": "Atta, Rice & Dal",
+      "image": "http://res.cloudinary.com/dsyqx5lie/image/upload/v1735787587/mern-store/kuewtssxe3i3kdit64sv.png",
+      "createdAt": "2025-01-02T03:13:10.815Z",
+      "updatedAt": "2025-01-02T03:13:10.815Z",
+      "__v": 0
+    }
+  ],
+  "subCategory": [
+    {
+      "_id": "677617a3893c6bbf2390fd4f",
+      "name": "Atta",
+      "image": "http://res.cloudinary.com/dsyqx5lie/image/upload/v1735792541/mern-store/kptgi9nr48f5xkrswu8v.png",
+      "category": [
+        {
+          "_id": "67760446893c6bbf2390fc22",
+          "name": "Atta, Rice & Dal",
+          "image": "http://res.cloudinary.com/dsyqx5lie/image/upload/v1735787587/mern-store/kuewtssxe3i3kdit64sv.png",
+          "createdAt": "2025-01-02T03:13:10.815Z",
+          "updatedAt": "2025-01-02T03:13:10.815Z",
+          "__v": 0
+        }
+      ],
+      "createdAt": "2025-01-02T04:35:47.236Z",
+      "updatedAt": "2025-01-02T04:35:47.236Z",
+      "__v": 0
+    }
+  ],
+  "unit": "5 Kg",
+  "stock": "112",
+  "price": "785",
+  "discount": "0",
+  "description": "100% Gandum Organik Bersertifikat dipetik dengan tangan, bersumber dari pertanian organik, ditanam tanpa menggunakan bahan kimia, pestisida, atau insektisida apa pun. Ini diproses dengan sangat hati-hati untuk memberi Anda tepung gandum utuh kualitas terbaik. Tumbuh secara organik tanpa pestisida dan pupuk",
+  "more_details": {
+    "Disclaimer": "Segala upaya dilakukan untuk menjaga keakuratan semua informasi. Namun, kemasan dan bahan produk yang sebenarnya mungkin berisi lebih banyak dan/atau informasi yang berbeda. Disarankan untuk tidak hanya mengandalkan informasi yang disajikan.",
+    "Return Policy": "Barang ini tidak dapat dikembalikan. Untuk barang yang rusak, cacat, salah atau kedaluwarsa, Anda dapat meminta penggantian dalam waktu 72 jam setelah pengiriman. Jika barang salah, Anda dapat mengajukan permintaan penggantian atau pengembalian hanya jika barang tersebut disegel/belum dibuka/tidak terpakai dan dalam kondisi aslinya."
+  }
+}

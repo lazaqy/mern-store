@@ -11,15 +11,16 @@ import { useDispatch } from "react-redux";
 import { setUserDetails } from "../store/userSlice";
 import Loading from "../components/Loading";
 
-const Register = () => {
+const Login = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -32,6 +33,11 @@ const Register = () => {
         ...SummaryApi.login,
         data: data,
       });
+
+      if (response.data.error) {
+        toast.error(response.data.message);
+      }
+
       if (response.data.success) {
         toast.success(response.data.message);
         localStorage.setItem("accessToken", response.data.data.accessToken);
@@ -39,21 +45,17 @@ const Register = () => {
 
         const userData = await userDetails();
         dispatch(setUserDetails(userData.data.data));
-        
+
         setData({
           email: "",
           password: "",
         });
         navigate("/");
       }
-
-      if (response.data.error) {
-        toast.error(response.data.message);
-      }
     } catch (error) {
       AxiosToastError(error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
   return (
@@ -102,7 +104,9 @@ const Register = () => {
           <button
             disabled={!validValues}
             className={`${
-              validValues ? "bg-green-800 hover:bg-green-600 cursor-pointer" : "bg-gray-500 cursor-not-allowed"
+              validValues
+                ? "bg-green-800 hover:bg-green-600 cursor-pointer"
+                : "bg-gray-500 cursor-not-allowed"
             } text-white py-2 rounded font-semibold my-4 tracking-wide`}
           >
             Login
@@ -127,4 +131,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

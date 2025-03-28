@@ -17,7 +17,7 @@ const Header = () => {
   const location = useLocation();
   const isSearchPage = location.pathname === "/search";
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state?.user);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const cartItem = useSelector((state) => state.cartItem.cart);
   const { totalPrice, totalQty } = useGlobalContext();
@@ -101,14 +101,15 @@ const Header = () => {
                   )}
                 </div>
               ) : (
-                <button
-                  onClick={redirectToLogin}
-                  className="text-neutral-600 hover:text-neutral-800"
-                >
-                  <FaRegUserCircle size={26} />
+                <button onClick={redirectToLogin} className="text-lg px-2">
+                  {/* <FaRegUserCircle size={26} /> */}
+                  Login
                 </button>
               )}
-              <button onClick={() => setOpenCart(true)} className="flex items-center gap-2 bg-green-700 p-2 rounded text-white">
+              <button
+                onClick={() => setOpenCart(true)}
+                className="flex items-center gap-2 bg-green-700 py-2 px-4 rounded-lg text-white"
+              >
                 {/* cart */}
                 <div className="animate-bounce">
                   <TiShoppingCart size={26} />

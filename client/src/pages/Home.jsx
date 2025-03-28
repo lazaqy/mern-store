@@ -61,10 +61,7 @@ const Home = () => {
             })
           : allCategories.map((category, index) => {
               return (
-                <div
-                  key={index}
-                  className="bg-white rounded p-4 min-h-36 grid gap-2 shadow"
-                >
+                <div key={index} className="w-full h-full">
                   <div
                     onClick={() =>
                       redirectProductList(category._id, category.name)

@@ -6,8 +6,8 @@ export const envConfig = {
     sameSite: "None",
   },
   production: {
-    domain: "vercel.app",
-    path: "/",
+    // domain: "vercel.app",
+    // path: "/",
     httpOnly: true,
     secure: true,
     sameSite: "None",

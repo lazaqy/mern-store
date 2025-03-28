@@ -6,7 +6,7 @@ const Axios = axios.create({
   withCredentials: true,
 });
 
-Axios.interceptors.response.use(
+Axios.interceptors.request.use(
   async (config) => {
     const token = localStorage.getItem("accessToken");
     if (token) {
@@ -24,15 +24,15 @@ Axios.interceptors.request.use(
     return response;
   },
   async (error) => {
-    let originalRequest = error.config;
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+    let originRequest = error.config;
+    if (error.response.status === 401 && !originRequest._retry) {
+      originRequest._retry = true;
       const refreshToken = localStorage.getItem("refreshToken");
-      if (refreshToken) { 
+      if (refreshToken) {
         const newAccessToken = await refreshAccessToken(refreshToken);
         if (newAccessToken) {
-          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-          return Axios(originalRequest);
+          originRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+          return Axios(originRequest);
         }
       }
     }

@@ -8,6 +8,7 @@ import uploadImageToCloudinary from "../utils/uploadImage.js";
 import generateOtp from "../utils/generateOtp.js";
 import forgotPasswordTemplate from "../utils/forgotPasswordTemplate.js";
 import jwt from "jsonwebtoken";
+import { envConfig } from "../config/env.js";
 
 export async function registerUserController(req, res) {
   try {
@@ -140,11 +141,8 @@ export async function loginUserController(req, res) {
 
     const accessToken = await generateAccessToken(user._id);
     const refreshToken = await generateRefreshToken(user._id);
-    const cookieOptions = {
-      httpOnly: true,
-      secure: true,
-      samesite: "none",
-    };
+
+    const cookieOptions = envConfig[process.env.NODE_ENV];
 
     res.cookie("accessToken", accessToken, cookieOptions);
     res.cookie("refreshToken", refreshToken, cookieOptions);
@@ -170,11 +168,9 @@ export async function loginUserController(req, res) {
 export async function logoutUserController(req, res) {
   try {
     const userId = req.userId;
-    const cookieOptions = {
-      httpOnly: true,
-      secure: true,
-      samesite: "none",
-    };
+
+    const cookieOptions = envConfig[process.env.NODE_ENV];
+
     res.clearCookie("accessToken", cookieOptions);
     res.clearCookie("refreshToken", cookieOptions);
 
@@ -404,7 +400,8 @@ export async function resetPasswordController(req, res) {
 
 export async function refreshTokenController(req, res) {
   try {
-    const refreshToken = req.cookies.refreshToken || req.headers?.authorization?.split(" ")[1];
+    const refreshToken =
+      req.cookies.refreshToken || req.headers?.authorization?.split(" ")[1];
     if (!refreshToken) {
       return res.status(401).json({
         message: "Invalid Token",
@@ -425,11 +422,9 @@ export async function refreshTokenController(req, res) {
     }
     const userId = isMatch.id;
     const newAccessToken = await generateAccessToken(userId);
-    const cookieOptions = {
-      httpOnly: true,
-      secure: true,
-      samesite: "none",
-    };
+
+    const cookieOptions = envConfig[process.env.NODE_ENV];
+
     res.cookie("accessToken", newAccessToken, cookieOptions);
 
     return res.status(200).json({
@@ -452,7 +447,9 @@ export async function refreshTokenController(req, res) {
 export async function getUserDetailsController(req, res) {
   try {
     const userId = req.userId;
-    const user = await UserModel.findById(userId).select("-password -refresh_token");
+    const user = await UserModel.findById(userId).select(
+      "-password -refresh_token"
+    );
     return res.status(200).json({
       message: "User details fetched successfully",
       success: true,

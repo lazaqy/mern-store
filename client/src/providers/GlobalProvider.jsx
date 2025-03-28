@@ -135,7 +135,7 @@ const GlobalProvider = ({ children }) => {
     handleLogoutOut();
     fetchAddress();
     fetchOrder();
-  }, [user]);
+  }, []);
 
   return (
     <GlobalContext.Provider
